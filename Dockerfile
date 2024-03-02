@@ -4,6 +4,8 @@ RUN mamba install -c conda-forge leafmap geopandas localtileserver -y && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
 
+RUN python --version
+
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 

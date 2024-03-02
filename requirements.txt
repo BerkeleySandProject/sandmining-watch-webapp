@@ -51,7 +51,7 @@ ipyevents==2.0.2
 ipyfilechooser==0.6.0
 ipykernel==6.29.3
 ipyleaflet==0.18.1
-ipython==8.22.1
+ipython==8.18.1
 ipytree==0.2.2
 ipyvue==1.10.2
 ipyvuetify==1.9.1
