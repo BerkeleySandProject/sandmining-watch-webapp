@@ -103,6 +103,7 @@ pystac==1.9.0
 pystac-client==0.7.6
 python-box==7.1.1
 python-dateutil==2.9.0.post0
+python-dotenv==1.0.1
 pytz==2024.1
 PyYAML==6.0.1
 pyzmq==25.1.2

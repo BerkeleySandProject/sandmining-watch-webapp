@@ -22,8 +22,8 @@ colorbar_path = "public/colorbar_r.png"
 #     dataset = json.load(f)
 
 # 4/1AeaYSHBO6T0v-jYdg2BKkIW8Ak4fBXFZAtvvXOVqDVLRq6k6QOhuC522od8
-GEE_TOKEN = os.environ["GEE_TOKEN"]
-ee.Authenticate(authorization_code=GEE_TOKEN)
+# GEE_TOKEN = os.environ["GEE_TOKEN"]
+# ee.Authenticate(authorization_code=GEE_TOKEN)
 
 dataset = [
     {
