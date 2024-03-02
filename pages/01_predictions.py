@@ -6,7 +6,9 @@ from matplotlib.colors import rgb2hex
 import numpy as np
 import ipywidgets as widgets
 from pathlib import Path
-# import sys, os
+import sys, os
+from dotenv import load_dotenv
+load_dotenv()
 # sys.path.insert(0, os.path.abspath('..'))
 
 #read in the dataset file json
@@ -18,6 +20,10 @@ colorbar_path = "public/colorbar_r.png"
 
 # with open(dataset_path) as f:
 #     dataset = json.load(f)
+
+# 4/1AeaYSHBO6T0v-jYdg2BKkIW8Ak4fBXFZAtvvXOVqDVLRq6k6QOhuC522od8
+GEE_TOKEN = os.environ["GEE_TOKEN"]
+ee.Authenticate(authorization_code=GEE_TOKEN)
 
 dataset = [
     {
