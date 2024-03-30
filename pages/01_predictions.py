@@ -8,7 +8,7 @@ import numpy as np
 import ipywidgets as widgets
 from pathlib import Path
 import sys
-
+from IPython.display import display
 
 import os
 
@@ -93,7 +93,8 @@ for item in dataset:
 
 
 zoom = solara.reactive(10)
-center = solara.reactive([40, -100])
+latlong = solara.reactive("")
+accepted_latlong = solara.reactive("")
 
 wandb_id = "6r8ypwmb"
 threshold = 0.01
@@ -197,20 +198,38 @@ class Map(geemap.Map):
             self.centerObject(prediction, int(zoom.value))
 
 
+M = Map()
+
+
+def update_center(latlong: str, M: geemap.Map):
+    try:
+        lat = float(latlong.split(",")[0])
+        long = float(latlong.split(",")[1])
+        M.setCenter(lon=long, lat=lat)
+        accepted_latlong.set("True")
+    except Exception as e:
+        accepted_latlong.set(f"{str(e)}")
+        pass
+
+
 @solara.component
 def Page():
     # with solara.Column(style={"min-width": "500px"}):
     with solara.Column():
         with solara.Card("This is a reactively-sized map."):
-            Map.element(  # type: ignore
-                zoom=zoom.value,
-                on_zoom=zoom.set,
-                # center=center.value,
-                # on_center=center.set,
-                scroll_wheel_zoom=True,
-                add_google_map=True,
-                height="500px",
-            )
+            display(M)
+            # M.element(  # type: ignore
+            #    zoom=zoom.value,
+            #    on_zoom=zoom.set,
+            #    scroll_wheel_zoom=True,
+            #    add_google_map=True,
+            #    height="1000px",
+            # )
             solara.Text(f"Zoom: {zoom.value}")
-            solara.Text(f"Center: {center.value}")
+            solara.InputText(
+                label="Latitude, Longitude",
+                value=latlong,
+                on_value=lambda val: update_center(val, M),
+            )
+            solara.Text(f"Accepted Latlong? {accepted_latlong}")
             solara.Image(colorbar_path)
