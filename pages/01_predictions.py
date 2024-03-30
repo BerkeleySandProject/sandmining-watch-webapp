@@ -9,6 +9,13 @@ import ipywidgets as widgets
 from pathlib import Path
 import sys
 
+
+import os
+
+AUTHORIZATION_CODE = os.getenv("EARTHENGINE_TOKEN")
+ee.Authenticate(authorization_code=AUTHORIZATION_CODE)
+ee.Initialize(project="gee-sand")
+
 # read in the dataset file json
 
 # dataset_path  = "/static/public/dataset.json"
