@@ -9,6 +9,9 @@ import ipywidgets as widgets
 from pathlib import Path
 import sys
 
+ee.Authenticate()
+ee.Initialize(project="gee-sand")
+
 # read in the dataset file json
 
 # dataset_path  = "/static/public/dataset.json"
