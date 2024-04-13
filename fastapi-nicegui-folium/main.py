@@ -76,7 +76,7 @@ def download_cloud_object(item_uri: str = Path(description="The URL of the gclou
     return {"data": "success"}
 
 @app.get("/convert-tif-to-mercator/{tif_filename}")
-def convert_tif_to_mercator(tif_filename: str = Path(description="Reproject a GeoTIFF file to the Mercator projection for Folium.")):
+def convert_tif_to_mercator(tif_filename: str = Path(description="Reproject a downloaded GeoTIFF file in local directory to the Mercator projection for Folium mapping.")):
     dst_crs = 'EPSG:3857'
 
     with rasterio.open(tif_filename) as src:
